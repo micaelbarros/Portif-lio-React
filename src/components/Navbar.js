@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, User, GraduationCap, Briefcase, Code2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/sobre", label: "Sobre", icon: User },
-  { href: "/experiencia-academica", label: "Exp. Acadêmica", icon: GraduationCap },
-  { href: "/experiencia-profissional", label: "Exp. Profissional", icon: Briefcase },
-  { href: "/projetos", label: "Projetos", icon: Code2 },
+  { href: "/", label: "Home" },
+  { href: "/sobre", label: "Sobre" },
+  { href: "/experiencia-academica", label: "Experiência Acadêmica" },
+  { href: "/experiencia-profissional", label: "Experiência Profissional" },
+  { href: "/projetos", label: "Projetos" },
 ];
 
 export default function Navbar() {
@@ -28,16 +28,14 @@ export default function Navbar() {
 
   return (
     <header className="navbar-header">
-      {/* Top Bar matching reference: Left burger icon | Center "Portfólio" | Right purple toggle */}
       <div className="navbar-top-row">
         <button
           type="button"
           className="menu-burger-btn"
           onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Alternar menu de navegação"
-          title="Abrir/Fechar Menu de Páginas"
+          aria-label="Menu"
         >
-          {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          {menuOpen ? <X size={25} /> : <Menu size={25} />}
         </button>
 
         <Link href="/" className="navbar-center-title">
@@ -49,20 +47,17 @@ export default function Navbar() {
             type="button"
             className={`theme-switch-pill ${lightMode ? "light" : ""}`}
             onClick={() => setLightMode((prev) => !prev)}
-            aria-label="Alternar tema claro/escuro"
-            title="Alternar tema"
+            aria-label="Alternar tema"
           >
             <span className="theme-switch-Dot" />
           </button>
         </div>
       </div>
 
-      {/* Collapsible Navigation Bar with the 5 mandatory pages */}
       {menuOpen && (
         <div className="navbar-links-bar">
-          <nav className="nav-links" aria-label="Navegação Principal">
+          <nav className="nav-links">
             {navItems.map((item) => {
-              const Icon = item.icon;
               const isActive = pathname === item.href;
               return (
                 <Link
@@ -70,8 +65,7 @@ export default function Navbar() {
                   href={item.href}
                   className={`nav-link ${isActive ? "active" : ""}`}
                 >
-                  <Icon size={15} />
-                  <span>{item.label}</span>
+                  {item.label}
                 </Link>
               );
             })}
