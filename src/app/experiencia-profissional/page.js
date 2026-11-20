@@ -1,4 +1,5 @@
 import { profileData } from "../../data/profileData";
+import PageEasterEggBadge from "../../components/PageEasterEggBadge";
 
 export const metadata = {
   title: `Experiência Profissional | ${profileData.name}`,
@@ -52,6 +53,13 @@ export default function ExperienciaProfissionalPage() {
           </article>
         ))}
       </section>
+
+      <PageEasterEggBadge
+        characterName="Minecraft Creeper"
+        image="/images/easter-eggs/minecraft-creeper.jpg"
+        speech="Tsssss... Construindo processos sólidos bloco por bloco sem explodir a produção!"
+        speechColor="#4ade80"
+      />
     </div>
   );
 }
