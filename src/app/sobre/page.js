@@ -1,4 +1,4 @@
-import { Cpu, Layers, Globe, Sparkles, CheckCircle2, Package } from "lucide-react";
+import { Cpu, Layers, Sparkles, CheckCircle2, Package, Globe2, MapPin, Phone } from "lucide-react";
 import { profileData } from "../../data/profileData";
 
 export const metadata = {
@@ -10,27 +10,100 @@ export default function SobrePage() {
     <div>
       <header className="page-header">
         <span className="badge-pill">
-          <Cpu size={14} /> Arquitetura & Stack Técnica
+          <Cpu size={14} /> Resumo Profissional, Idiomas & Stack do App
         </span>
         <h1 className="page-title">
           Sobre Mim & <span className="gradient-text">Tecnologias do App</span>
         </h1>
         <p className="page-subtitle">
-          Conheça minha trajetória como desenvolvedor e todos os módulos, bibliotecas, APIs e recursos de CSS utilizados na engenharia deste portfólio.
+          Conheça meu resumo profissional, tecnologias conhecidas, idiomas e todos os módulos e bibliotecas utilizados na construção deste portfólio React/Next.js.
         </p>
       </header>
 
-      {/* Bio Card */}
+      {/* Bio Card + Contact Details */}
       <section className="glass-card" style={{ marginBottom: "2.5rem" }}>
         <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "0.85rem" }}>
-          Perfil do Desenvolvedor
+          Resumo Profissional — {profileData.name}
         </h2>
-        <p style={{ color: "var(--text-secondary)", marginBottom: "1rem" }}>
-          Olá! Sou <strong style={{ color: "#fff" }}>{profileData.name}</strong>, desenvolvedor focado na construção de aplicações web modernas utilizando o ecossistema JavaScript/TypeScript, React e Next.js. Busco sempre unir código limpo, arquitetura modular e interfaces de alto impacto visual.
+        <p style={{ color: "var(--text-secondary)", marginBottom: "1.1rem" }}>
+          {profileData.bio}
         </p>
-        <p style={{ color: "var(--text-secondary)" }}>
-          Este projeto foi desenvolvido com foco em <strong style={{ color: "#67e8f9" }}>Componentização</strong>, <strong style={{ color: "#a5b4fc" }}>Design System próprio em CSS3</strong> e <strong style={{ color: "#34d399" }}>Integrações Assíncronas com APIs REST Públicas</strong>.
-        </p>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", paddingTop: "0.8rem", borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: "0.92rem", color: "#cbd5e1" }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem" }}>
+            <Phone size={16} color="#10b981" /> <strong>Contato:</strong> {profileData.phone}
+          </span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem" }}>
+            <MapPin size={16} color="#6366f1" /> <strong>Endereço:</strong> {profileData.address}
+          </span>
+        </div>
+      </section>
+
+      {/* Known Technologies & Languages from Resume */}
+      <section className="grid-2" style={{ marginBottom: "2.75rem" }}>
+        <div className="glass-card">
+          <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <Sparkles size={20} color="#6366f1" />
+            Tecnologias Conhecidas
+          </h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            {profileData.knownTechnologies.map((item) => (
+              <div key={item.name}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.92rem", marginBottom: "0.35rem" }}>
+                  <strong>{item.name}</strong>
+                  <span style={{ color: "#67e8f9", fontFamily: "JetBrains Mono, monospace", fontSize: "0.82rem" }}>
+                    {item.level}
+                  </span>
+                </div>
+                <div style={{ width: "100%", height: "8px", background: "rgba(255,255,255,0.08)", borderRadius: "999px", overflow: "hidden" }}>
+                  <div
+                    style={{
+                      width: `${item.percentage}%`,
+                      height: "100%",
+                      background: "var(--gradient-main)",
+                      borderRadius: "999px",
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="glass-card">
+          <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <Globe2 size={20} color="#06b6d4" />
+            Idiomas & Habilidades
+          </h2>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem", marginBottom: "1.25rem" }}>
+            {profileData.languages.map((lang) => (
+              <div
+                key={lang.language}
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: "10px",
+                  padding: "0.65rem 0.85rem",
+                }}
+              >
+                <div style={{ fontWeight: 700, fontSize: "0.95rem" }}>{lang.language}</div>
+                <div style={{ fontSize: "0.8rem", color: "#a5b4fc" }}>{lang.level}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginBottom: "0.45rem", textTransform: "uppercase" }}>
+            Habilidades Comportamentais
+          </div>
+          <div className="tag-list" style={{ marginTop: 0 }}>
+            {profileData.softSkills.map((sk) => (
+              <span key={sk} className="tag-chip">
+                {sk}
+              </span>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* All Technologies & Modules Used to Build the App */}
@@ -38,7 +111,7 @@ export default function SobrePage() {
         <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.25rem" }}>
           <Package size={22} color="#6366f1" />
           <h2 style={{ fontSize: "1.45rem", fontWeight: 700 }}>
-            Tecnologias e Módulos Utilizados neste Aplicativo
+            Tecnologias e Módulos Utilizados para Desenvolver este App
           </h2>
         </div>
 
@@ -92,7 +165,7 @@ export default function SobrePage() {
         <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.25rem" }}>
           <Sparkles size={22} color="#a855f7" />
           <h2 style={{ fontSize: "1.45rem", fontWeight: 700 }}>
-            Matriz de Competências Técnicas
+            Matriz Completa de Competências
           </h2>
         </div>
 
