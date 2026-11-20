@@ -1,15 +1,10 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  MapPin,
-  Phone,
-  Github,
   GraduationCap,
   Briefcase,
   Code2,
   User,
-  Terminal,
-  Globe2,
   Award,
 } from "lucide-react";
 import { profileData } from "../data/profileData";
@@ -18,174 +13,172 @@ import ApiDashboardWidget from "../components/ApiDashboardWidget";
 export default function HomePage() {
   return (
     <div>
-      {/* Hero Grid */}
-      <section className="hero-grid">
-        <div className="glass-card hero-main">
-          <div>
-            <span className="badge-pill">
-              <span className="status-dot" /> UNICAP (Sistemas p/ Internet) • Unopar (ADS) • Porto Digital
-            </span>
-          </div>
+      {/* Clean Hero Section matching Reference Design */}
+      <section className="clean-hero-section">
+        <div className="clean-hero-left">
+          <h1 className="clean-hero-greeting">Olá, eu sou o</h1>
+          <h2 className="clean-hero-name">Micael Barros :)</h2>
+          <p className="clean-hero-role">
+            Desenvolvedor Full Stack | Java | Spring Boot | React.js | Next.js
+          </p>
 
-          <h1 className="hero-title">
-            Olá, eu sou <span className="gradient-text">{profileData.name}</span>
-          </h1>
-
-          <div className="hero-role">&gt; {profileData.role}</div>
-
-          <p className="hero-bio">{profileData.bio}</p>
-
-          <div className="btn-group">
-            <Link href="/projetos" className="btn btn-primary">
-              <Code2 size={18} />
-              Ver Conecta Mesa & Projetos
-              <ArrowRight size={17} />
-            </Link>
-            <Link href="/sobre" className="btn btn-secondary">
-              <User size={18} />
-              Sobre & Tecnologias do App
-            </Link>
+          <div className="clean-hero-buttons">
+            <a
+              href="/Curriculo-Micael-Barros.pdf"
+              download="Curriculo-Micael-Barros.pdf"
+              className="pill-btn-primary"
+            >
+              Download CV
+            </a>
+            <a
+              href="https://wa.me/5581985917311"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill-btn-outline"
+            >
+              Entrar em contato
+            </a>
           </div>
         </div>
 
-        {/* Side Profile Summary */}
-        <aside className="glass-card profile-card">
-          <div>
-            <div className="avatar-header" style={{ marginBottom: "1.25rem" }}>
-              <div className="avatar-circle">
-                <img
-                  src={`https://avatars.githubusercontent.com/${profileData.githubUsername}`}
-                  alt={profileData.name}
-                />
-              </div>
-              <div>
-                <h2 style={{ fontSize: "1.2rem", fontWeight: 700 }}>{profileData.name}</h2>
-                <span style={{ fontSize: "0.84rem", color: "#a5b4fc" }}>
-                  Estudante de TI • Desenvolvedor
-                </span>
-              </div>
-            </div>
-
-            <div className="meta-list">
-              <div className="meta-item">
-                <Phone size={16} color="#10b981" />
-                <span>{profileData.phone}</span>
-              </div>
-              <div className="meta-item">
-                <MapPin size={16} color="#6366f1" />
-                <span>{profileData.address}</span>
-              </div>
-              <div className="meta-item">
-                <Github size={16} color="#a855f7" />
-                <a
-                  href={profileData.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#67e8f9" }}
-                >
-                  github.com/{profileData.githubUsername}
-                </a>
-              </div>
-              <div className="meta-item">
-                <Terminal size={16} color="#06b6d4" />
-                <span>Java (Avançado), Spring Boot, HTML5, CSS, JS, React</span>
-              </div>
-              <div className="meta-item">
-                <Globe2 size={16} color="#f59e0b" />
-                <span>PT (Nativo) • EN (Interm.) • ES (Básico) • FR (Inicial)</span>
-              </div>
-            </div>
+        <div className="clean-hero-right">
+          <div className="hero-avatar-ring">
+            <img
+              src={`https://avatars.githubusercontent.com/${profileData.githubUsername}`}
+              alt={profileData.name}
+            />
           </div>
-
-          <div>
-            <div
-              style={{
-                fontSize: "0.78rem",
-                color: "var(--text-muted)",
-                marginBottom: "0.4rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
-              }}
-            >
-              Tecnologias Conhecidas & Habilidades
-            </div>
-            <div className="tag-list" style={{ marginTop: 0 }}>
-              {[
-                "Java (Avançado)",
-                "Spring Boot",
-                "HTML5 + CSS3 + JS",
-                "React & Next.js",
-                "Resolução de Problemas",
-                "Trabalho em Equipe",
-              ].map((t) => (
-                <span key={t} className="tag-chip">
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </aside>
+        </div>
       </section>
 
-      {/* Metrics / Stats */}
-      <section className="stats-grid">
-        {profileData.stats.map((st) => (
-          <div key={st.label} className="glass-card stat-card">
-            <div className="stat-value">{st.value}</div>
-            <div className="stat-label">{st.label}</div>
-          </div>
-        ))}
+      {/* About Preview Section */}
+      <section style={{ textAlign: "center", maxWidth: "860px", margin: "0 auto 4rem" }}>
+        <h2 style={{ fontSize: "1.85rem", fontWeight: 700, marginBottom: "1rem" }}>
+          Sobre mim
+        </h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: "1.02rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
+          {profileData.bio}
+        </p>
+        <div style={{ display: "flex", justifyContent: "center", gap: "0.6rem", flexWrap: "wrap" }}>
+          {[
+            "Java (Avançado)",
+            "Spring Boot",
+            "HTML5 & CSS3",
+            "JavaScript",
+            "React.js",
+            "Next.js 14",
+            "Git & GitHub",
+          ].map((tech) => (
+            <span key={tech} className="tag-chip">
+              {tech}
+            </span>
+          ))}
+        </div>
       </section>
 
       {/* Conecta Mesa Banner Highlight on Home */}
-      <section className="glass-card" style={{ marginBottom: "2.5rem", border: "1px solid rgba(16, 185, 129, 0.35)" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "1.5rem", alignItems: "center" }}>
+      <section
+        className="glass-card"
+        style={{ marginBottom: "3rem", border: "1px solid rgba(130, 87, 230, 0.45)" }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "auto 1fr",
+            gap: "1.5rem",
+            alignItems: "center",
+          }}
+        >
           <img
             src={profileData.conectaMesaSpotlight.logoImage}
             alt="Logo Conecta Mesa"
-            style={{ width: 96, height: 96, borderRadius: "18px", objectFit: "cover", border: "2px solid rgba(16, 185, 129, 0.5)" }}
+            style={{
+              width: 92,
+              height: 92,
+              borderRadius: "18px",
+              objectFit: "cover",
+              border: "2px solid #8257e6",
+            }}
           />
           <div>
             <span className="api-badge" style={{ marginBottom: "0.45rem" }}>
               <Award size={13} /> Destaque Residência Tecnológica Porto Digital & Beyond Co.
             </span>
-            <h2 style={{ fontSize: "1.35rem", fontWeight: 800, marginBottom: "0.35rem" }}>
+            <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "0.35rem" }}>
               {profileData.conectaMesaSpotlight.title}
             </h2>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.94rem", marginBottom: "0.8rem" }}>
-              <strong>&ldquo;{profileData.conectaMesaSpotlight.slogan}&rdquo;</strong> — Transformando desperdício em dignidade alimentar ao conectar comerciantes locais, famílias em situação de vulnerabilidade e ONGs.
+            <p
+              style={{
+                color: "var(--text-secondary)",
+                fontSize: "0.94rem",
+                marginBottom: "0.75rem",
+              }}
+            >
+              <strong>&ldquo;{profileData.conectaMesaSpotlight.slogan}&rdquo;</strong> —
+              Transformando desperdício em dignidade alimentar ao conectar comerciantes locais,
+              famílias em situação de vulnerabilidade e ONGs.
             </p>
-            <Link href="/projetos" style={{ color: "#34d399", fontWeight: 600, fontSize: "0.9rem", display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-              Ver fotos da apresentação e detalhes do projeto <ArrowRight size={15} />
+            <Link
+              href="/projetos"
+              style={{
+                color: "#a855f7",
+                fontWeight: 600,
+                fontSize: "0.9rem",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.4rem",
+              }}
+            >
+              Ver fotos da apresentação e projetos desenvolvidos <ArrowRight size={15} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Quick Navigation Sections */}
-      <section style={{ marginBottom: "2.5rem" }}>
-        <h2 style={{ fontSize: "1.45rem", fontWeight: 700, marginBottom: "1.2rem" }}>
-          Explore o <span className="gradient-text">Currículo Completo</span>
+      {/* Quick Navigation to the 5 Required Curriculum Pages */}
+      <section style={{ marginBottom: "3rem" }}>
+        <h2 style={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "1.25rem", textAlign: "center" }}>
+          Navegue pelo <span className="gradient-text">Currículo & Portfólio</span>
         </h2>
 
         <div className="grid-2">
+          <Link href="/sobre" className="glass-card" style={{ display: "block" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.6rem" }}>
+              <User size={24} color="#8257e6" />
+              <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>Sobre & Tecnologias do App</h3>
+            </div>
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
+              Todas as tecnologias, bibliotecas, hooks e módulos utilizados para desenvolver este aplicativo React/Next.js, além dos meus 4 idiomas.
+            </p>
+          </Link>
+
           <Link href="/experiencia-academica" className="glass-card" style={{ display: "block" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.6rem" }}>
-              <GraduationCap size={24} color="#6366f1" />
-              <h3 style={{ fontSize: "1.18rem", fontWeight: 700 }}>Experiência Acadêmica & Certificações</h3>
+              <GraduationCap size={24} color="#a855f7" />
+              <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>Experiência Acadêmica</h3>
             </div>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.94rem" }}>
-              Tecnólogo em Sistemas para Internet (UNICAP), Bacharelado em ADS (Unopar), Ciclo RiseUp Rocketseat e Técnicas Administrativas.
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
+              Sistemas para Internet (UNICAP), Análise e Desenvolvimento de Sistemas (Unopar), Ciclo RiseUp Rocketseat e Técnicas Administrativas.
             </p>
           </Link>
 
           <Link href="/experiencia-profissional" className="glass-card" style={{ display: "block" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.6rem" }}>
-              <Briefcase size={24} color="#06b6d4" />
-              <h3 style={{ fontSize: "1.18rem", fontWeight: 700 }}>Experiência Profissional</h3>
+              <Briefcase size={24} color="#8257e6" />
+              <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>Experiência Profissional</h3>
             </div>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.94rem" }}>
-              Atuação como Auxiliar Administrativo na Unimed HGMI (2025 - 2026) e desenvolvimento do projeto Conecta Mesa no Porto Digital.
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
+              Atuação como Auxiliar Administrativo na Unimed HGMI e Residente Tecnológico no Porto Digital / Beyond Co.
+            </p>
+          </Link>
+
+          <Link href="/projetos" className="glass-card" style={{ display: "block" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.6rem" }}>
+              <Code2 size={24} color="#a855f7" />
+              <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>Projetos Desenvolvidos</h3>
+            </div>
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
+              Conecta Mesa e integração ao vivo com a API do GitHub listando meus repositórios públicos.
             </p>
           </Link>
         </div>
