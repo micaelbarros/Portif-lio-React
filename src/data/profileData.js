@@ -1,10 +1,8 @@
 export const profileData = {
   name: "Micael Barros da Silva",
+  shortName: "Micael",
   role: "Estudante de TI & Desenvolvedor Full Stack (Java / React / Next.js)",
   githubUsername: "micaelbarros",
-  phone: "(81) 98591-7311",
-  address: "Rua Brasitania 26 - Vasco da Gama, Recife - PE",
-  email: "micael.barros@dev.com",
   location: "Recife, PE - Brasil",
   linkedin: "https://linkedin.com",
   github: "https://github.com/micaelbarros",
@@ -208,7 +206,7 @@ export const profileData = {
       name: "CSS3 Moderno & Custom Properties",
       category: "Estilização & Design System",
       version: "CSS3 / variáveis nativas",
-      description: "Arquitetura CSS autoral avançada com variáveis globais, Glassmorphism (backdrop-filter), CSS Grid e Flexbox responsivos, gradientes dinâmicos e animações @keyframes fluidas."
+      description: "Arquitetura CSS autoral avançada com variáveis globais em tons de vermelho crimson/escarlate, Glassmorphism (backdrop-filter), CSS Grid e Flexbox responsivos."
     },
     {
       name: "Lucide React (lucide-react)",

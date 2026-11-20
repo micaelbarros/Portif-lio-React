@@ -1,4 +1,4 @@
-import { Cpu, Layers, Sparkles, CheckCircle2, Package, Globe2, MapPin, Phone } from "lucide-react";
+import { Cpu, Layers, Sparkles, CheckCircle2, Package, Globe2 } from "lucide-react";
 import { profileData } from "../../data/profileData";
 
 export const metadata = {
@@ -20,30 +20,21 @@ export default function SobrePage() {
         </p>
       </header>
 
-      {/* Bio Card + Contact Details */}
+      {/* Bio Card without personal phone or street address */}
       <section className="glass-card" style={{ marginBottom: "2.5rem" }}>
         <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "0.85rem" }}>
           Resumo Profissional — {profileData.name}
         </h2>
-        <p style={{ color: "var(--text-secondary)", marginBottom: "1.1rem" }}>
+        <p style={{ color: "var(--text-secondary)" }}>
           {profileData.bio}
         </p>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", paddingTop: "0.8rem", borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: "0.92rem", color: "#cbd5e1" }}>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem" }}>
-            <Phone size={16} color="#10b981" /> <strong>Contato:</strong> {profileData.phone}
-          </span>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem" }}>
-            <MapPin size={16} color="#6366f1" /> <strong>Endereço:</strong> {profileData.address}
-          </span>
-        </div>
       </section>
 
       {/* Known Technologies & Languages from Resume */}
       <section className="grid-2" style={{ marginBottom: "2.75rem" }}>
         <div className="glass-card">
           <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <Sparkles size={20} color="#6366f1" />
+            <Sparkles size={20} color="#e11d48" />
             Tecnologias Conhecidas
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -51,7 +42,7 @@ export default function SobrePage() {
               <div key={item.name}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.92rem", marginBottom: "0.35rem" }}>
                   <strong>{item.name}</strong>
-                  <span style={{ color: "#67e8f9", fontFamily: "JetBrains Mono, monospace", fontSize: "0.82rem" }}>
+                  <span style={{ color: "#fda4af", fontFamily: "JetBrains Mono, monospace", fontSize: "0.82rem" }}>
                     {item.level}
                   </span>
                 </div>
@@ -72,7 +63,7 @@ export default function SobrePage() {
 
         <div className="glass-card">
           <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <Globe2 size={20} color="#06b6d4" />
+            <Globe2 size={20} color="#f43f5e" />
             Idiomas & Habilidades
           </h2>
 
@@ -82,13 +73,13 @@ export default function SobrePage() {
                 key={lang.language}
                 style={{
                   background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(225, 29, 72, 0.22)",
                   borderRadius: "10px",
                   padding: "0.65rem 0.85rem",
                 }}
               >
                 <div style={{ fontWeight: 700, fontSize: "0.95rem" }}>{lang.language}</div>
-                <div style={{ fontSize: "0.8rem", color: "#a5b4fc" }}>{lang.level}</div>
+                <div style={{ fontSize: "0.8rem", color: "#fda4af" }}>{lang.level}</div>
               </div>
             ))}
           </div>
@@ -109,7 +100,7 @@ export default function SobrePage() {
       {/* All Technologies & Modules Used to Build the App */}
       <section style={{ marginBottom: "2.75rem" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.25rem" }}>
-          <Package size={22} color="#6366f1" />
+          <Package size={22} color="#e11d48" />
           <h2 style={{ fontSize: "1.45rem", fontWeight: 700 }}>
             Tecnologias e Módulos Utilizados para Desenvolver este App
           </h2>
@@ -124,7 +115,7 @@ export default function SobrePage() {
                 </h3>
                 <span className="timeline-period">{tech.version}</span>
               </div>
-              <div style={{ fontSize: "0.8rem", color: "#a5b4fc", fontWeight: 600, marginBottom: "0.6rem", textTransform: "uppercase" }}>
+              <div style={{ fontSize: "0.8rem", color: "#fda4af", fontWeight: 600, marginBottom: "0.6rem", textTransform: "uppercase" }}>
                 {tech.category}
               </div>
               <p style={{ fontSize: "0.93rem", color: "var(--text-secondary)" }}>
@@ -138,7 +129,7 @@ export default function SobrePage() {
       {/* React Hooks & Next.js Native Modules breakdown */}
       <section className="glass-card" style={{ marginBottom: "2.75rem" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1rem" }}>
-          <Layers size={22} color="#06b6d4" />
+          <Layers size={22} color="#f43f5e" />
           <h2 style={{ fontSize: "1.35rem", fontWeight: 700 }}>
             Módulos Internos do React & Next.js Aplicados
           </h2>
@@ -163,7 +154,7 @@ export default function SobrePage() {
       {/* Developer Skills Matrix */}
       <section>
         <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.25rem" }}>
-          <Sparkles size={22} color="#a855f7" />
+          <Sparkles size={22} color="#e11d48" />
           <h2 style={{ fontSize: "1.45rem", fontWeight: 700 }}>
             Matriz Completa de Competências
           </h2>
@@ -173,7 +164,7 @@ export default function SobrePage() {
           {profileData.skills.map((group) => (
             <div key={group.category} className="glass-card">
               <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.85rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <CheckCircle2 size={18} color="#10b981" />
+                <CheckCircle2 size={18} color="#f43f5e" />
                 {group.category}
               </h3>
               <div className="tag-list" style={{ marginTop: 0 }}>
