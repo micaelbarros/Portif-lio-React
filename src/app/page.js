@@ -9,7 +9,12 @@ export default function HomePage() {
       <section className="clean-hero-section">
         <div className="clean-hero-left">
           <h1 className="clean-hero-greeting">Olá, eu sou o</h1>
-          <h2 className="clean-hero-name">Micael :)</h2>
+          <h2
+            className="clean-hero-name"
+            title='Easter Egg: digite "tibia", "mine", "vader" ou "doom" no teclado!'
+          >
+            Micael :)
+          </h2>
           <p className="clean-hero-role">
             Estudante de TI | Java | Spring Boot | React.js | Next.js
           </p>

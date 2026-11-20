@@ -1,5 +1,6 @@
 import { Github, ExternalLink } from "lucide-react";
 import { profileData } from "../data/profileData";
+import EasterEggs from "./EasterEggs";
 
 export default function Footer() {
   return (
@@ -27,6 +28,8 @@ export default function Footer() {
           </a>
         </div>
       </div>
+
+      <EasterEggs />
     </footer>
   );
 }

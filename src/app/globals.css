@@ -474,6 +474,65 @@ body.light-theme .tag-chip {
   font-size: 0.88rem;
 }
 
+/* Easter Eggs Floating Widget */
+.easter-corner-trigger {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.easter-sprite-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.easter-sprite-btn:hover {
+  transform: scale(1.1) translateY(-2px);
+}
+
+.easter-sprite-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.easter-popup-card {
+  width: 300px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-primary);
+  border-radius: 12px;
+  padding: 0.9rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+}
+
+@keyframes creeperShake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-6px, 4px); }
+  40% { transform: translate(6px, -4px); }
+  60% { transform: translate(-4px, -3px); }
+  80% { transform: translate(4px, 3px); }
+}
+
+.shake-screen {
+  animation: creeperShake 0.45s ease-in-out;
+}
+
 /* Responsive */
 @media (max-width: 960px) {
   .clean-hero-section {
