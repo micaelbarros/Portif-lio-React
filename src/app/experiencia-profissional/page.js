@@ -1,4 +1,3 @@
-import { Briefcase, Calendar, MapPin } from "lucide-react";
 import { profileData } from "../../data/profileData";
 
 export const metadata = {
@@ -9,45 +8,31 @@ export default function ExperienciaProfissionalPage() {
   return (
     <div>
       <header className="page-header">
-        <span className="badge-pill">
-          <Briefcase size={14} /> Carreira & Atuação no Mercado
-        </span>
         <h1 className="page-title">
-          Experiência <span className="gradient-text">Profissional</span>
+          Experiência <span className="accent-text">Profissional</span>
         </h1>
         <p className="page-subtitle">
-          Histórico de atuação profissional, projetos entregues, liderança técnica e impactos gerados com tecnologias web modernas.
+          Histórico de atuação profissional e projetos práticos desenvolvidos.
         </p>
       </header>
 
       <section className="timeline">
         {profileData.professional.map((job) => (
-          <article key={job.id} className="glass-card timeline-item">
-            <div className="timeline-dot" />
-
+          <article key={job.id} className="glass-card">
             <div className="timeline-header">
               <div>
-                <h2 style={{ fontSize: "1.3rem", fontWeight: 700, color: "#f8fafc" }}>
+                <h2 style={{ fontSize: "1.22rem", fontWeight: 700 }}>
                   {job.role}
                 </h2>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.85rem", flexWrap: "wrap", marginTop: "0.25rem" }}>
-                  <span style={{ color: "#67e8f9", fontWeight: 600, fontSize: "0.96rem" }}>
-                    {job.company}
-                  </span>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem", fontSize: "0.82rem", color: "var(--text-secondary)" }}>
-                    <MapPin size={13} />
-                    {job.type}
-                  </span>
+                <div style={{ color: "var(--accent-primary)", fontWeight: 600, fontSize: "0.95rem", marginTop: "0.15rem" }}>
+                  {job.company} • <span style={{ color: "var(--text-secondary)", fontWeight: 400 }}>{job.type}</span>
                 </div>
               </div>
 
-              <span className="timeline-period">
-                <Calendar size={13} />
-                {job.period}
-              </span>
+              <span className="timeline-period">{job.period}</span>
             </div>
 
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.96rem" }}>
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem" }}>
               {job.description}
             </p>
 

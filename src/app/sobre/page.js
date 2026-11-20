@@ -1,57 +1,50 @@
-import { Cpu, Layers, Sparkles, CheckCircle2, Package, Globe2 } from "lucide-react";
 import { profileData } from "../../data/profileData";
 
 export const metadata = {
-  title: `Sobre & Tecnologias | ${profileData.name}`,
+  title: `Sobre | ${profileData.name}`,
 };
 
 export default function SobrePage() {
   return (
     <div>
       <header className="page-header">
-        <span className="badge-pill">
-          <Cpu size={14} /> Resumo Profissional, Idiomas & Stack do App
-        </span>
         <h1 className="page-title">
-          Sobre Mim & <span className="gradient-text">Tecnologias do App</span>
+          Sobre & <span className="accent-text">Tecnologias</span>
         </h1>
         <p className="page-subtitle">
-          Conheça meu resumo profissional, tecnologias conhecidas, idiomas e todos os módulos e bibliotecas utilizados na construção deste portfólio React/Next.js.
+          Resumo profissional, idiomas, habilidades e as tecnologias utilizadas no desenvolvimento deste site.
         </p>
       </header>
 
-      {/* Bio Card without personal phone or street address */}
-      <section className="glass-card" style={{ marginBottom: "2.5rem" }}>
-        <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "0.85rem" }}>
-          Resumo Profissional — {profileData.name}
+      <section className="glass-card" style={{ marginBottom: "2rem" }}>
+        <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "0.75rem" }}>
+          Resumo Profissional
         </h2>
         <p style={{ color: "var(--text-secondary)" }}>
           {profileData.bio}
         </p>
       </section>
 
-      {/* Known Technologies & Languages from Resume */}
-      <section className="grid-2" style={{ marginBottom: "2.75rem" }}>
+      <section className="grid-2" style={{ marginBottom: "2.5rem" }}>
         <div className="glass-card">
-          <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <Sparkles size={20} color="#e11d48" />
+          <h2 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: "1rem" }}>
             Tecnologias Conhecidas
           </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.9rem" }}>
             {profileData.knownTechnologies.map((item) => (
               <div key={item.name}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.92rem", marginBottom: "0.35rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.9rem", marginBottom: "0.3rem" }}>
                   <strong>{item.name}</strong>
-                  <span style={{ color: "#fda4af", fontFamily: "JetBrains Mono, monospace", fontSize: "0.82rem" }}>
+                  <span style={{ color: "var(--text-secondary)", fontSize: "0.84rem" }}>
                     {item.level}
                   </span>
                 </div>
-                <div style={{ width: "100%", height: "8px", background: "rgba(255,255,255,0.08)", borderRadius: "999px", overflow: "hidden" }}>
+                <div style={{ width: "100%", height: "7px", background: "rgba(255,255,255,0.08)", borderRadius: "999px", overflow: "hidden" }}>
                   <div
                     style={{
                       width: `${item.percentage}%`,
                       height: "100%",
-                      background: "var(--gradient-main)",
+                      background: "var(--accent-primary)",
                       borderRadius: "999px",
                     }}
                   />
@@ -62,31 +55,27 @@ export default function SobrePage() {
         </div>
 
         <div className="glass-card">
-          <h2 style={{ fontSize: "1.25rem", fontWeight: 700, marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <Globe2 size={20} color="#f43f5e" />
+          <h2 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: "1rem" }}>
             Idiomas & Habilidades
           </h2>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem", marginBottom: "1.25rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.7rem", marginBottom: "1.2rem" }}>
             {profileData.languages.map((lang) => (
               <div
                 key={lang.language}
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(225, 29, 72, 0.22)",
-                  borderRadius: "10px",
-                  padding: "0.65rem 0.85rem",
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid var(--border-subtle)",
+                  borderRadius: "8px",
+                  padding: "0.6rem 0.8rem",
                 }}
               >
-                <div style={{ fontWeight: 700, fontSize: "0.95rem" }}>{lang.language}</div>
-                <div style={{ fontSize: "0.8rem", color: "#fda4af" }}>{lang.level}</div>
+                <div style={{ fontWeight: 600, fontSize: "0.92rem" }}>{lang.language}</div>
+                <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)" }}>{lang.level}</div>
               </div>
             ))}
           </div>
 
-          <div style={{ fontSize: "0.82rem", color: "var(--text-muted)", marginBottom: "0.45rem", textTransform: "uppercase" }}>
-            Habilidades Comportamentais
-          </div>
           <div className="tag-list" style={{ marginTop: 0 }}>
             {profileData.softSkills.map((sk) => (
               <span key={sk} className="tag-chip">
@@ -97,84 +86,24 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* All Technologies & Modules Used to Build the App */}
-      <section style={{ marginBottom: "2.75rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.25rem" }}>
-          <Package size={22} color="#e11d48" />
-          <h2 style={{ fontSize: "1.45rem", fontWeight: 700 }}>
-            Tecnologias e Módulos Utilizados para Desenvolver este App
-          </h2>
-        </div>
+      <section style={{ marginBottom: "2.5rem" }}>
+        <h2 className="section-title">
+          Tecnologias e Módulos Utilizados no Desenvolvimento do App
+        </h2>
 
         <div className="grid-2">
           {profileData.appTechnologies.map((tech) => (
             <article key={tech.name} className="glass-card">
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.75rem", marginBottom: "0.65rem" }}>
-                <h3 style={{ fontSize: "1.12rem", fontWeight: 700, color: "#f8fafc" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.75rem", marginBottom: "0.5rem" }}>
+                <h3 style={{ fontSize: "1.08rem", fontWeight: 700 }}>
                   {tech.name}
                 </h3>
                 <span className="timeline-period">{tech.version}</span>
               </div>
-              <div style={{ fontSize: "0.8rem", color: "#fda4af", fontWeight: 600, marginBottom: "0.6rem", textTransform: "uppercase" }}>
-                {tech.category}
-              </div>
-              <p style={{ fontSize: "0.93rem", color: "var(--text-secondary)" }}>
+              <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)" }}>
                 {tech.description}
               </p>
             </article>
-          ))}
-        </div>
-      </section>
-
-      {/* React Hooks & Next.js Native Modules breakdown */}
-      <section className="glass-card" style={{ marginBottom: "2.75rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1rem" }}>
-          <Layers size={22} color="#f43f5e" />
-          <h2 style={{ fontSize: "1.35rem", fontWeight: 700 }}>
-            Módulos Internos do React & Next.js Aplicados
-          </h2>
-        </div>
-
-        <ul className="bullet-list">
-          <li>
-            <strong>next/link & next/navigation (usePathname):</strong> Navegação client-side instantânea (SPA) sem recarregamento de página e detecção automática da rota ativa na barra de navegação.
-          </li>
-          <li>
-            <strong>react (useState, useEffect, useCallback, useMemo):</strong> Gerenciamento de estado reativo para consumo de APIs, controle de carregamento (loading states), busca e filtragem dinâmica de repositórios.
-          </li>
-          <li>
-            <strong>Fetch API & Async/Await:</strong> Comunicação HTTP assíncrona com tratamento de erros (try/catch) e fallback resiliente para múltiplas APIs públicas (GitHub API, Open-Meteo API e DummyJSON Quotes API).
-          </li>
-          <li>
-            <strong>CSS Custom Properties & Glassmorphism:</strong> Variáveis nativas (<code>--bg-card</code>, <code>--gradient-main</code>), <code>backdrop-filter: blur(14px)</code> e layouts responsivos com CSS Grid e Flexbox.
-          </li>
-        </ul>
-      </section>
-
-      {/* Developer Skills Matrix */}
-      <section>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.25rem" }}>
-          <Sparkles size={22} color="#e11d48" />
-          <h2 style={{ fontSize: "1.45rem", fontWeight: 700 }}>
-            Matriz Completa de Competências
-          </h2>
-        </div>
-
-        <div className="grid-2">
-          {profileData.skills.map((group) => (
-            <div key={group.category} className="glass-card">
-              <h3 style={{ fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.85rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <CheckCircle2 size={18} color="#f43f5e" />
-                {group.category}
-              </h3>
-              <div className="tag-list" style={{ marginTop: 0 }}>
-                {group.items.map((skill) => (
-                  <span key={skill} className="tag-chip">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
           ))}
         </div>
       </section>

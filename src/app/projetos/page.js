@@ -1,18 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import {
-  Code2,
-  Github,
-  ExternalLink,
-  Star,
-  GitFork,
-  Search,
-  RefreshCw,
-  FolderGit2,
-  Users,
-  HeartHandshake,
-} from "lucide-react";
+import { Github, ExternalLink, Star, GitFork, RefreshCw } from "lucide-react";
 import { profileData } from "../../data/profileData";
 
 export default function ProjetosPage() {
@@ -30,7 +19,7 @@ export default function ProjetosPage() {
         `https://api.github.com/users/${profileData.githubUsername}/repos?sort=updated&per_page=30`
       );
       if (!response.ok) {
-        throw new Error("Limite da API do GitHub atingido ou usuário não encontrado.");
+        throw new Error("Não foi possível carregar os repositórios no momento.");
       }
       const data = await response.json();
       if (Array.isArray(data)) {
@@ -70,181 +59,90 @@ export default function ProjetosPage() {
   return (
     <div>
       <header className="page-header">
-        <span className="badge-pill">
-          <Code2 size={14} /> Portfólio, Residência Porto Digital & GitHub API
-        </span>
         <h1 className="page-title">
-          Projetos <span className="gradient-text">Desenvolvidos</span>
+          Projetos <span className="accent-text">Desenvolvidos</span>
         </h1>
         <p className="page-subtitle">
-          Conheça o projeto <strong>Conecta Mesa</strong> apresentado na Residência Tecnológica do Porto Digital junto com a Beyond Co., além dos meus repositórios públicos integrados em tempo real via API do GitHub.
+          Projeto Conecta Mesa apresentado no Porto Digital junto com a Beyond Co. e repositórios públicos do GitHub.
         </p>
       </header>
 
-      {/* Conecta Mesa Full Showcase Section */}
-      <section className="glass-card" style={{ marginBottom: "3rem", border: "1px solid rgba(16, 185, 129, 0.4)" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "0.75rem", marginBottom: "1.25rem" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
-            <img
-              src={spot.logoImage}
-              alt="Conecta Mesa Logo"
-              style={{ width: 64, height: 64, borderRadius: "14px", objectFit: "cover", border: "2px solid #10b981" }}
-            />
-            <div>
-              <span className="api-badge" style={{ marginBottom: "0.3rem" }}>
-                <HeartHandshake size={13} /> Residência Tecnológica do Porto Digital • Beyond Co.
-              </span>
-              <h2 style={{ fontSize: "1.45rem", fontWeight: 800, color: "#f8fafc" }}>
-                {spot.title}
-              </h2>
+      {/* Conecta Mesa Section */}
+      <section className="glass-card" style={{ marginBottom: "2.75rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.25rem" }}>
+          <img
+            src={spot.logoImage}
+            alt="Conecta Mesa Logo"
+            style={{ width: 60, height: 60, borderRadius: "12px", objectFit: "cover" }}
+          />
+          <div>
+            <h2 style={{ fontSize: "1.35rem", fontWeight: 700 }}>
+              {spot.title}
+            </h2>
+            <div style={{ color: "var(--accent-primary)", fontSize: "0.92rem", fontWeight: 500 }}>
+              {spot.slogan}
             </div>
           </div>
         </div>
 
         <div className="grid-2" style={{ alignItems: "center" }}>
           <div>
-            <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#34d399", marginBottom: "0.75rem" }}>
-              &ldquo;{spot.slogan}&rdquo;
-            </p>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginBottom: "1rem" }}>
               {spot.description}
             </p>
-            <p style={{ color: "#cbd5e1", fontSize: "0.9rem", marginBottom: "1rem" }}>
-              <strong>Mentoria & Acompanhamento:</strong> {spot.mentors}
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "1rem" }}>
+              <strong>Acompanhamento:</strong> {spot.mentors}
             </p>
 
-            <div style={{ background: "rgba(0,0,0,0.28)", padding: "1rem", borderRadius: "12px", marginBottom: "1rem" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontWeight: 700, fontSize: "0.9rem", color: "#a5b4fc", marginBottom: "0.5rem" }}>
-                <Users size={16} /> Equipe Conecta Mesa:
+            <div style={{ marginBottom: "1rem" }}>
+              <div style={{ fontWeight: 600, fontSize: "0.9rem", marginBottom: "0.4rem" }}>
+                Equipe:
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+              <div className="tag-list" style={{ marginTop: 0 }}>
                 {spot.team.map((member) => (
-                  <span
-                    key={member}
-                    className="tag-chip"
-                    style={{
-                      background: member.includes("Micael") ? "rgba(16, 185, 129, 0.2)" : "rgba(255,255,255,0.06)",
-                      color: member.includes("Micael") ? "#34d399" : "#e2e8f0",
-                    }}
-                  >
+                  <span key={member} className="tag-chip">
                     {member}
                   </span>
                 ))}
               </div>
             </div>
-
-            <div className="tag-list">
-              {spot.tags.map((tag) => (
-                <span key={tag} className="tag-chip">
-                  {tag}
-                </span>
-              ))}
-            </div>
           </div>
 
-          <div style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 12px 30px rgba(0,0,0,0.45)" }}>
+          <div style={{ borderRadius: "12px", overflow: "hidden", border: "1px solid var(--border-subtle)" }}>
             <img
               src={spot.teamImage}
-              alt="Apresentação Equipe Conecta Mesa na Beyond Co. / Porto Digital"
-              style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }}
+              alt="Equipe Conecta Mesa na Beyond Co. / Porto Digital"
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
           </div>
-        </div>
-      </section>
-
-      {/* Featured Curated Projects */}
-      <section style={{ marginBottom: "3rem" }}>
-        <h2 style={{ fontSize: "1.4rem", fontWeight: 700, marginBottom: "1.2rem" }}>
-          Resumo de <span className="gradient-text">Projetos em Destaque</span>
-        </h2>
-
-        <div className="grid-3">
-          {profileData.featuredProjects.map((proj) => (
-            <article
-              key={proj.id}
-              className="glass-card"
-              style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
-            >
-              <div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.85rem" }}>
-                  <FolderGit2 size={24} color="#6366f1" />
-                  <div style={{ display: "flex", gap: "0.6rem" }}>
-                    <a
-                      href={proj.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Código no GitHub"
-                      style={{ color: "var(--text-secondary)" }}
-                    >
-                      <Github size={18} />
-                    </a>
-                    <a
-                      href={proj.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Acessar Projeto"
-                      style={{ color: "#67e8f9" }}
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  </div>
-                </div>
-
-                <h3 style={{ fontSize: "1.16rem", fontWeight: 700, marginBottom: "0.55rem" }}>
-                  {proj.title}
-                </h3>
-                <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)" }}>
-                  {proj.description}
-                </p>
-              </div>
-
-              <div className="tag-list">
-                {proj.tech.map((t) => (
-                  <span key={t} className="tag-chip">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 
       {/* Dynamic GitHub API Integration Section */}
       <section>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "1rem", marginBottom: "1.25rem" }}>
-          <div>
-            <h2 style={{ fontSize: "1.4rem", fontWeight: 700 }}>
-              Repositórios Públicos <span className="gradient-text">(GitHub REST API)</span>
-            </h2>
-            <p style={{ fontSize: "0.86rem", color: "var(--text-secondary)" }}>
-              Consumindo em tempo real: <code>https://api.github.com/users/{profileData.githubUsername}/repos</code>
-            </p>
-          </div>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "1rem", marginBottom: "1.2rem" }}>
+          <h2 className="section-title" style={{ marginBottom: 0 }}>
+            Repositórios no GitHub
+          </h2>
 
-          <button onClick={fetchGithubRepos} className="btn btn-secondary" style={{ padding: "0.55rem 1rem", fontSize: "0.85rem" }}>
-            <RefreshCw size={15} />
-            Sincronizar API
+          <button
+            onClick={fetchGithubRepos}
+            className="pill-btn-outline"
+            style={{ padding: "0.45rem 1rem", fontSize: "0.82rem", gap: "0.4rem" }}
+          >
+            <RefreshCw size={14} />
+            Atualizar
           </button>
         </div>
 
-        {/* Search & Language Filter Bar */}
         <div className="filter-bar">
-          <div style={{ position: "relative", flex: "1", maxWidth: "380px" }}>
-            <Search
-              size={16}
-              color="#94a3b8"
-              style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)" }}
-            />
-            <input
-              type="text"
-              className="search-input"
-              style={{ width: "100%", paddingLeft: "2.3rem" }}
-              placeholder="Filtrar repositório por nome ou descrição..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Buscar repositório..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
 
           <div style={{ display: "flex", gap: "0.45rem", flexWrap: "wrap" }}>
             {languages.map((lang) => (
@@ -254,9 +152,8 @@ export default function ProjetosPage() {
                 className="tag-chip"
                 style={{
                   cursor: "pointer",
-                  background: selectedLang === lang ? "var(--gradient-main)" : "rgba(99, 102, 241, 0.13)",
-                  color: selectedLang === lang ? "#ffffff" : "#c7d2fe",
-                  border: selectedLang === lang ? "1px solid transparent" : "1px solid rgba(99, 102, 241, 0.28)",
+                  background: selectedLang === lang ? "var(--accent-primary)" : "rgba(76, 154, 120, 0.14)",
+                  color: selectedLang === lang ? "#ffffff" : "#8fd1b5",
                 }}
               >
                 {lang}
@@ -266,23 +163,16 @@ export default function ProjetosPage() {
         </div>
 
         {loading ? (
-          <div className="glass-card" style={{ textAlign: "center", padding: "3rem" }}>
-            <p style={{ color: "#67e8f9", fontWeight: 600 }}>
-              Carregando repositórios diretamente da API do GitHub...
-            </p>
+          <div className="glass-card" style={{ textAlign: "center", padding: "2.5rem" }}>
+            <p style={{ color: "var(--text-secondary)" }}>Carregando repositórios do GitHub...</p>
           </div>
         ) : error ? (
           <div className="glass-card" style={{ textAlign: "center", padding: "2rem" }}>
-            <p style={{ color: "#fca5a5", marginBottom: "0.5rem" }}>{error}</p>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>
-              Os projetos em destaque acima permanecem disponíveis.
-            </p>
+            <p style={{ color: "var(--text-secondary)" }}>{error}</p>
           </div>
         ) : filteredRepos.length === 0 ? (
-          <div className="glass-card" style={{ textAlign: "center", padding: "2.5rem" }}>
-            <p style={{ color: "var(--text-secondary)" }}>
-              Nenhum repositório encontrado para o filtro selecionado.
-            </p>
+          <div className="glass-card" style={{ textAlign: "center", padding: "2rem" }}>
+            <p style={{ color: "var(--text-secondary)" }}>Nenhum repositório encontrado.</p>
           </div>
         ) : (
           <div className="grid-2">
@@ -293,8 +183,8 @@ export default function ProjetosPage() {
                 style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
               >
                 <div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.75rem", marginBottom: "0.6rem" }}>
-                    <h3 style={{ fontSize: "1.12rem", fontWeight: 700, color: "#f8fafc", wordBreak: "break-word" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "0.75rem", marginBottom: "0.5rem" }}>
+                    <h3 style={{ fontSize: "1.08rem", fontWeight: 700 }}>
                       {repo.name}
                     </h3>
                     <a
@@ -302,41 +192,28 @@ export default function ProjetosPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="timeline-period"
-                      style={{ flexShrink: 0 }}
+                      style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem" }}
                     >
                       <Github size={13} />
-                      Ver Código
+                      GitHub
                       <ExternalLink size={12} />
                     </a>
                   </div>
 
-                  <p style={{ fontSize: "0.91rem", color: "var(--text-secondary)", marginBottom: "1rem" }}>
-                    {repo.description || "Repositório desenvolvido com foco em boas práticas de engenharia de software e desenvolvimento web."}
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", marginBottom: "1rem" }}>
+                    {repo.description || "Repositório no GitHub."}
                   </p>
                 </div>
 
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.5rem", borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "0.85rem" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    {repo.language && <span className="tag-chip">{repo.language}</span>}
-                    {repo.homepage && (
-                      <a
-                        href={repo.homepage}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="tag-chip"
-                        style={{ background: "rgba(16, 185, 129, 0.14)", color: "#34d399", borderColor: "rgba(16, 185, 129, 0.3)" }}
-                      >
-                        Demo Live
-                      </a>
-                    )}
-                  </div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid var(--border-subtle)", paddingTop: "0.75rem" }}>
+                  <div>{repo.language && <span className="tag-chip">{repo.language}</span>}</div>
 
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", fontSize: "0.82rem", color: "var(--text-secondary)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.85rem", fontSize: "0.82rem", color: "var(--text-secondary)" }}>
                     <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem" }}>
-                      <Star size={14} color="#facc15" /> {repo.stargazers_count}
+                      <Star size={14} /> {repo.stargazers_count}
                     </span>
                     <span style={{ display: "inline-flex", alignItems: "center", gap: "0.25rem" }}>
-                      <GitFork size={14} color="#67e8f9" /> {repo.forks_count}
+                      <GitFork size={14} /> {repo.forks_count}
                     </span>
                   </div>
                 </div>
