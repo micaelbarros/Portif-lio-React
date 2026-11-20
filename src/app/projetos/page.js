@@ -10,6 +10,8 @@ import {
   Search,
   RefreshCw,
   FolderGit2,
+  Users,
+  HeartHandshake,
 } from "lucide-react";
 import { profileData } from "../../data/profileData";
 
@@ -63,24 +65,97 @@ export default function ProjetosPage() {
     });
   }, [repos, search, selectedLang]);
 
+  const spot = profileData.conectaMesaSpotlight;
+
   return (
     <div>
       <header className="page-header">
         <span className="badge-pill">
-          <Code2 size={14} /> Portfólio & Repositórios Reais via GitHub API
+          <Code2 size={14} /> Portfólio, Residência Porto Digital & GitHub API
         </span>
         <h1 className="page-title">
           Projetos <span className="gradient-text">Desenvolvidos</span>
         </h1>
         <p className="page-subtitle">
-          Projetos em destaque e integração ao vivo com a API oficial do GitHub listando automaticamente os repositórios públicos de <strong>@{profileData.githubUsername}</strong>.
+          Conheça o projeto <strong>Conecta Mesa</strong> apresentado na Residência Tecnológica do Porto Digital junto com a Beyond Co., além dos meus repositórios públicos integrados em tempo real via API do GitHub.
         </p>
       </header>
+
+      {/* Conecta Mesa Full Showcase Section */}
+      <section className="glass-card" style={{ marginBottom: "3rem", border: "1px solid rgba(16, 185, 129, 0.4)" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "0.75rem", marginBottom: "1.25rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
+            <img
+              src={spot.logoImage}
+              alt="Conecta Mesa Logo"
+              style={{ width: 64, height: 64, borderRadius: "14px", objectFit: "cover", border: "2px solid #10b981" }}
+            />
+            <div>
+              <span className="api-badge" style={{ marginBottom: "0.3rem" }}>
+                <HeartHandshake size={13} /> Residência Tecnológica do Porto Digital • Beyond Co.
+              </span>
+              <h2 style={{ fontSize: "1.45rem", fontWeight: 800, color: "#f8fafc" }}>
+                {spot.title}
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid-2" style={{ alignItems: "center" }}>
+          <div>
+            <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#34d399", marginBottom: "0.75rem" }}>
+              &ldquo;{spot.slogan}&rdquo;
+            </p>
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginBottom: "1rem" }}>
+              {spot.description}
+            </p>
+            <p style={{ color: "#cbd5e1", fontSize: "0.9rem", marginBottom: "1rem" }}>
+              <strong>Mentoria & Acompanhamento:</strong> {spot.mentors}
+            </p>
+
+            <div style={{ background: "rgba(0,0,0,0.28)", padding: "1rem", borderRadius: "12px", marginBottom: "1rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontWeight: 700, fontSize: "0.9rem", color: "#a5b4fc", marginBottom: "0.5rem" }}>
+                <Users size={16} /> Equipe Conecta Mesa:
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                {spot.team.map((member) => (
+                  <span
+                    key={member}
+                    className="tag-chip"
+                    style={{
+                      background: member.includes("Micael") ? "rgba(16, 185, 129, 0.2)" : "rgba(255,255,255,0.06)",
+                      color: member.includes("Micael") ? "#34d399" : "#e2e8f0",
+                    }}
+                  >
+                    {member}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="tag-list">
+              {spot.tags.map((tag) => (
+                <span key={tag} className="tag-chip">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ borderRadius: "16px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 12px 30px rgba(0,0,0,0.45)" }}>
+            <img
+              src={spot.teamImage}
+              alt="Apresentação Equipe Conecta Mesa na Beyond Co. / Porto Digital"
+              style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }}
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Featured Curated Projects */}
       <section style={{ marginBottom: "3rem" }}>
         <h2 style={{ fontSize: "1.4rem", fontWeight: 700, marginBottom: "1.2rem" }}>
-          Projetos em <span className="gradient-text">Destaque</span>
+          Resumo de <span className="gradient-text">Projetos em Destaque</span>
         </h2>
 
         <div className="grid-3">
