@@ -1,5 +1,4 @@
 import { profileData } from "../../data/profileData";
-import PageEasterEggBadge from "../../components/PageEasterEggBadge";
 
 export const metadata = {
   title: `Experiência Acadêmica | ${profileData.name}`,
@@ -87,13 +86,6 @@ export default function ExperienciaAcademicaPage() {
           </div>
         ))}
       </section>
-
-      <PageEasterEggBadge
-        characterName="Darth Vader"
-        image="/images/easter-eggs/darth-vader.png"
-        speech="A Força do conhecimento acadêmico na UNICAP e Unopar é forte em você!"
-        speechColor="#f87171"
-      />
     </div>
   );
 }

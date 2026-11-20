@@ -1,5 +1,4 @@
 import { profileData } from "../../data/profileData";
-import PageEasterEggBadge from "../../components/PageEasterEggBadge";
 
 export const metadata = {
   title: `Sobre | ${profileData.name}`,
@@ -108,13 +107,6 @@ export default function SobrePage() {
           ))}
         </div>
       </section>
-
-      <PageEasterEggBadge
-        characterName="Doutor Destino (Dr. Doom)"
-        image="/images/easter-eggs/dr-doom.jpg"
-        speech="A arquitetura React/Next.js deste App e seu tema verde são supremos como Latvéria!"
-        speechColor="#8fd1b5"
-      />
     </div>
   );
 }

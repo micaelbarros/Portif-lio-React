@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { profileData } from "../data/profileData";
 import ApiDashboardWidget from "../components/ApiDashboardWidget";
-import PageEasterEggBadge from "../components/PageEasterEggBadge";
 
 export default function HomePage() {
   return (
@@ -113,13 +112,6 @@ export default function HomePage() {
 
       {/* API Integrations */}
       <ApiDashboardWidget />
-
-      <PageEasterEggBadge
-        characterName="Tibia Citizen"
-        image="/images/easter-eggs/tibia-citizen.png"
-        speech="15:30 Micael [100]: Utani Gran Hur! Bem-vindo à minha Home!"
-        speechColor="#facc15"
-      />
     </div>
   );
 }
