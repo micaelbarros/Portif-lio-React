@@ -13,25 +13,21 @@ import ApiDashboardWidget from "../components/ApiDashboardWidget";
 export default function HomePage() {
   return (
     <div>
-      {/* Clean Hero Section matching Reference Design */}
+      {/* Clean Hero Section in Crimson Red Shades */}
       <section className="clean-hero-section">
         <div className="clean-hero-left">
           <h1 className="clean-hero-greeting">Olá, eu sou o</h1>
-          <h2 className="clean-hero-name">Micael Barros :)</h2>
+          <h2 className="clean-hero-name">Micael :)</h2>
           <p className="clean-hero-role">
             Desenvolvedor Full Stack | Java | Spring Boot | React.js | Next.js
           </p>
 
           <div className="clean-hero-buttons">
+            <Link href="/projetos" className="pill-btn-primary">
+              Ver Projetos
+            </Link>
             <a
-              href="/Curriculo-Micael-Barros.pdf"
-              download="Curriculo-Micael-Barros.pdf"
-              className="pill-btn-primary"
-            >
-              Download CV
-            </a>
-            <a
-              href="https://wa.me/5581985917311"
+              href={profileData.github}
               target="_blank"
               rel="noopener noreferrer"
               className="pill-btn-outline"
@@ -79,7 +75,7 @@ export default function HomePage() {
       {/* Conecta Mesa Banner Highlight on Home */}
       <section
         className="glass-card"
-        style={{ marginBottom: "3rem", border: "1px solid rgba(130, 87, 230, 0.45)" }}
+        style={{ marginBottom: "3rem", border: "1px solid rgba(225, 29, 72, 0.45)" }}
       >
         <div
           style={{
@@ -97,7 +93,7 @@ export default function HomePage() {
               height: 92,
               borderRadius: "18px",
               objectFit: "cover",
-              border: "2px solid #8257e6",
+              border: "2px solid #e11d48",
             }}
           />
           <div>
@@ -121,7 +117,7 @@ export default function HomePage() {
             <Link
               href="/projetos"
               style={{
-                color: "#a855f7",
+                color: "#fb7185",
                 fontWeight: 600,
                 fontSize: "0.9rem",
                 display: "inline-flex",
@@ -144,7 +140,7 @@ export default function HomePage() {
         <div className="grid-2">
           <Link href="/sobre" className="glass-card" style={{ display: "block" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.6rem" }}>
-              <User size={24} color="#8257e6" />
+              <User size={24} color="#e11d48" />
               <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>Sobre & Tecnologias do App</h3>
             </div>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
@@ -154,7 +150,7 @@ export default function HomePage() {
 
           <Link href="/experiencia-academica" className="glass-card" style={{ display: "block" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.6rem" }}>
-              <GraduationCap size={24} color="#a855f7" />
+              <GraduationCap size={24} color="#f43f5e" />
               <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>Experiência Acadêmica</h3>
             </div>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
@@ -164,7 +160,7 @@ export default function HomePage() {
 
           <Link href="/experiencia-profissional" className="glass-card" style={{ display: "block" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.6rem" }}>
-              <Briefcase size={24} color="#8257e6" />
+              <Briefcase size={24} color="#e11d48" />
               <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>Experiência Profissional</h3>
             </div>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
@@ -174,7 +170,7 @@ export default function HomePage() {
 
           <Link href="/projetos" className="glass-card" style={{ display: "block" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.6rem" }}>
-              <Code2 size={24} color="#a855f7" />
+              <Code2 size={24} color="#f43f5e" />
               <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>Projetos Desenvolvidos</h3>
             </div>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
