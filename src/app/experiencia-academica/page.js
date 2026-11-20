@@ -1,4 +1,4 @@
-import { GraduationCap, Calendar, Award, BookOpen } from "lucide-react";
+import { GraduationCap, Calendar, Award, ShieldCheck } from "lucide-react";
 import { profileData } from "../../data/profileData";
 
 export const metadata = {
@@ -10,13 +10,13 @@ export default function ExperienciaAcademicaPage() {
     <div>
       <header className="page-header">
         <span className="badge-pill">
-          <GraduationCap size={14} /> Formação & Educação Continuada
+          <GraduationCap size={14} /> Formação Superior & Certificações
         </span>
         <h1 className="page-title">
           Experiência <span className="gradient-text">Acadêmica</span>
         </h1>
         <p className="page-subtitle">
-          Minha jornada acadêmica, formação superior em tecnologia, especializações práticas e atividades de pesquisa e monitoria.
+          Graduações na UNICAP e Unopar, cursos de extensão técnica e certificações verificadas na área de Tecnologia da Informação e Administração.
         </p>
       </header>
 
@@ -43,7 +43,10 @@ export default function ExperienciaAcademicaPage() {
                 <span
                   className="tag-chip"
                   style={{
-                    background: item.status === "Em andamento" ? "rgba(16, 185, 129, 0.15)" : "rgba(99, 102, 241, 0.15)",
+                    background:
+                      item.status === "Em andamento"
+                        ? "rgba(16, 185, 129, 0.15)"
+                        : "rgba(99, 102, 241, 0.15)",
                     color: item.status === "Em andamento" ? "#34d399" : "#c7d2fe",
                   }}
                 >
@@ -65,33 +68,48 @@ export default function ExperienciaAcademicaPage() {
         ))}
       </section>
 
-      {/* Academic Pillars */}
+      {/* Licenças e Certificações Showcase */}
       <section style={{ marginTop: "3rem" }}>
-        <h2 style={{ fontSize: "1.4rem", fontWeight: 700, marginBottom: "1.25rem" }}>
-          Pilares de Estudo & <span className="gradient-text">Pesquisa</span>
-        </h2>
-
-        <div className="grid-2">
-          <div className="glass-card">
-            <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.6rem" }}>
-              <BookOpen size={20} color="#6366f1" />
-              <h3 style={{ fontSize: "1.1rem", fontWeight: 700 }}>Engenharia de Software & Web</h3>
-            </div>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
-              Aprofundamento em padrões de projeto, arquitetura limpa, estruturas de dados, algoritmos e desenvolvimento de Single Page Applications (SPA) e Server-Side Rendering (SSR).
-            </p>
-          </div>
-
-          <div className="glass-card">
-            <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "0.6rem" }}>
-              <Award size={20} color="#06b6d4" />
-              <h3 style={{ fontSize: "1.1rem", fontWeight: 700 }}>Projetos Integradores & Comunidade</h3>
-            </div>
-            <p style={{ color: "var(--text-secondary)", fontSize: "0.92rem" }}>
-              Participação em hackathons, monitoria acadêmica de lógica de programação e criação de soluções tecnológicas voltadas para impacto real.
-            </p>
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.65rem", marginBottom: "1.25rem" }}>
+          <Award size={22} color="#10b981" />
+          <h2 style={{ fontSize: "1.45rem", fontWeight: 700 }}>
+            Licenças e <span className="gradient-text">Certificações</span>
+          </h2>
         </div>
+
+        {profileData.certifications.map((cert) => (
+          <div key={cert.credentialId} className="glass-card" style={{ display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "1.5rem", alignItems: "center" }}>
+            <div>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", color: "#34d399", fontSize: "0.82rem", fontWeight: 600, marginBottom: "0.5rem" }}>
+                <ShieldCheck size={16} /> Credencial Verificada Rocketseat & UNICAP
+              </div>
+              <h3 style={{ fontSize: "1.3rem", fontWeight: 800, marginBottom: "0.3rem" }}>
+                {cert.title}
+              </h3>
+              <p style={{ color: "#a5b4fc", fontWeight: 600, marginBottom: "0.4rem" }}>
+                Organização emissora: {cert.issuer} • {cert.date}
+              </p>
+              <p style={{ fontSize: "0.86rem", color: "var(--text-secondary)", fontFamily: "JetBrains Mono, monospace", marginBottom: "1rem" }}>
+                Código da credencial: {cert.credentialId}
+              </p>
+              <div className="tag-list" style={{ marginTop: 0 }}>
+                {cert.skills.map((s) => (
+                  <span key={s} className="tag-chip">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ borderRadius: "14px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.12)", background: "#ffffff" }}>
+              <img
+                src={cert.image}
+                alt={cert.title}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </div>
+          </div>
+        ))}
       </section>
     </div>
   );
